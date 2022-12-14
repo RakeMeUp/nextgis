@@ -2,8 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { query } from "../../../server/services/query";
 import { connectMongo } from "../../../server/utils/connectMongo";
-import { getDuration } from "../../../server/utils/getDuration";
-import { msToMins } from "../../../server/utils/msToMins";
+import { getAllMs } from "../../../server/utils/getAllMs";
 
 export default async function minutesHandler(req: NextApiRequest, res: NextApiResponse) {
     await connectMongo();
@@ -17,9 +16,9 @@ export default async function minutesHandler(req: NextApiRequest, res: NextApiRe
         case "GET":
             try {
                 const entries = await query({ year, month, day });
-                const milliseconds = entries.reduce((acc, obj) => acc + getDuration(obj), 0);
-                const minutes = msToMins(milliseconds);
-                res.status(200).json(minutes);
+                const milliseconds = getAllMs(entries);
+                const mins = milliseconds / 60000;
+                res.status(200).json(mins);
             } catch (error) {
                 res.status(500).send("Internal Server Error");
             }

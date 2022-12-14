@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import PasteForm from "./PasteForm";
 import { Entry } from "../../Interfaces/Entry";
 import clipboardToEntry from "../../utils/clipboardToEntry";
+import { fetcher } from "../../utils/fetcher";
 
 type Props = {};
 
@@ -27,6 +28,12 @@ function Form({}: Props) {
             window.removeEventListener("paste", handlePasteAnywhere);
         };
     }, []);
+
+    const handleSubmit = async () => {
+        await fetcher("POST", "api/entries", obj);
+        setObj([]);
+    };
+
     return (
         /* inset css bcuz nextjs puts boundaries in html that fucks with style */
         <div className="absolute inset-0">
@@ -59,6 +66,9 @@ function Form({}: Props) {
                         <div>Paste Here</div>
                     )}
                 </div>
+                <button className="bg-themedarkgray" onClick={handleSubmit}>
+                    SEND
+                </button>
             </div>
         </div>
     );
