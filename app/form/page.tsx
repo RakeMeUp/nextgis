@@ -1,19 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import PasteForm from "./PasteForm";
-import { excelObject } from "../../Interfaces/newExcelObj";
-import excelToObject from "../../utils/clipboardToEntry";
+import { Entry } from "../../Interfaces/Entry";
+import clipboardToEntry from "../../utils/clipboardToEntry";
 
 type Props = {};
 
 function Form({}: Props) {
-    const [obj, setObj] = useState([] as excelObject[]);
+    const [obj, setObj] = useState([] as Entry[]);
 
     useEffect(() => {
         const handlePasteAnywhere = (event: any) => {
             let data = event.clipboardData.getData("text");
             try {
-                let object: excelObject[] = excelToObject(data);
+                let object: Entry[] = clipboardToEntry(data);
 
                 setObj(object);
             } catch (e) {
