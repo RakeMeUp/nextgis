@@ -25,7 +25,7 @@ https://cloud.mongodb.com/
 
 ### Array of Entries:
 
-`api/entries/` - [GET]
+`api/entries/` - [GET, POST]
 
 `api/entries/amount` - [GET]
 
