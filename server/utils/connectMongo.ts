@@ -1,3 +1,3 @@
 import mongoose from "mongoose";
 
-export const connectMongo = async () => mongoose.connect(process.env.MONGOURL || "");
+export const connectMongo = async () => mongoose.connect(process.env.MONGODB_URI || "");
