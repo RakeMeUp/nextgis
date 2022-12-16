@@ -31,7 +31,8 @@ function Form({}: Props) {
         };
     }, []);
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
         const err = await poster("POST", "api/entries", obj);
         if (err) {
             toast("Error happened while sending, Try Again", {
@@ -41,8 +42,6 @@ function Form({}: Props) {
             });
         } else {
             toast("Success", {
-                hideProgressBar: false,
-                autoClose: 2000,
                 type: "success",
             });
             setObj([]);
@@ -56,7 +55,7 @@ function Form({}: Props) {
     return (
         /* inset css bcuz nextjs puts boundaries in html that fucks with style */
         <div className="absolute inset-0">
-            <div className="bg-themelightgray btn-shadow flex flex-col m-10 rounded-3xl h-2/3">
+            <form className="bg-themelightgray btn-shadow flex flex-col m-10 rounded-3xl h-2/3">
                 <h2 className="text-center py-3 text-[30px] font-bold">Excel Paste</h2>
                 <div className="max-h-[80%] rounded-3xl overflow-scroll scrollbar-hide w-fit mx-auto">
                     {obj.length ? (
@@ -75,7 +74,7 @@ function Form({}: Props) {
                 >
                     Send Data
                 </button>
-            </div>
+            </form>
         </div>
     );
 }
