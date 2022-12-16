@@ -8,7 +8,7 @@ type Props = {
 
 function Table({ obj, handleRemove }: Props) {
     return (
-        <table className="bg-themedarkgray text-themelightgray relative text-sm md:text-base min-h-[300px]">
+        <table className="bg-themedarkgray text-themelightgray relative text-sm md:text-base lg:text-lg min-h-[300px]">
             <thead className=" bg-themedarkgray text-themelightgray sticky top-0 left-0 right-0">
                 <th>Project</th>
                 <th>Area</th>
@@ -25,23 +25,23 @@ function Table({ obj, handleRemove }: Props) {
                             {Object.values(e).map((e, i) => {
                                 if (e instanceof Date)
                                     return (
-                                        <td className="px-2 max-w-[120px]" key={i}>
+                                        <td className="px-2 lg:px-8 max-w-[120px]" key={i}>
                                             {e.toLocaleTimeString().slice(0, -3)}
                                         </td>
                                     );
                                 if (i === 2)
                                     return (
-                                        <td className="px-2 max-w-[120px]" key={i}>
+                                        <td className="px-2 lg:px-8" key={i}>
                                             {e.slice(0, -4)}
                                         </td>
                                     );
                                 return (
-                                    <td className="px-2 " key={i}>
+                                    <td className="px-2 lg:px-8" key={i}>
                                         {e}
                                     </td>
                                 );
                             })}
-                            <td className="w-14 px-2">
+                            <td className="w-14 px-2 ">
                                 <button
                                     onClick={() => handleRemove(e.Start)}
                                     className="rounded-full w-full h-full"
