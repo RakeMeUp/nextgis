@@ -18,6 +18,8 @@ module.exports = {
             themered: "#DB3A34",
             themeyellow: "#FFC857",
             themegreen: "#306100",
+            black: "#000",
+            white: "#fff",
         },
     },
 };

@@ -7,18 +7,21 @@ const Navbar = (props: Props) => {
     return (
         <nav className="pt-5 px-5 flex flex-col gap-5">
             <Link
+                title="Home"
                 className={"bg-themelightgray btn-shadow w-16 h-16 text-themedarkgray rounded-full"}
                 href={"/"}
             >
                 <MdHome className="h-full w-full p-[10px]" />
             </Link>
             <Link
+                title="Tables"
                 className={"bg-themelightgray btn-shadow w-16 h-16 text-themedarkgray rounded-full"}
                 href={"/tables"}
             >
                 <MdBackupTable className="h-full w-full p-[10px]" />
             </Link>
             <Link
+                title="Form"
                 className={"bg-themelightgray btn-shadow w-16 h-16 text-themedarkgray rounded-full"}
                 href={"/form"}
             >

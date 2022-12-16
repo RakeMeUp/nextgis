@@ -7,7 +7,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html>
             <head />
 
-            <body className="bg-themedarkgray grid-parent h-screen outline outline-2 outline-themered">
+            <body className="bg-themedarkgray grid-parent h-screen">
                 <Header />
                 <Navbar />
                 <main className="grid-main relative">{children}</main>

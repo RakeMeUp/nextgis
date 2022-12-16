@@ -1,20 +1,21 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import PasteForm from "./PasteForm";
 import { Entry } from "../../Interfaces/Entry";
 import clipboardToEntry from "../../utils/clipboardToEntry";
 import { fetcher } from "../../utils/fetcher";
+import Table from "./Table";
 
 type Props = {};
 
 function Form({}: Props) {
-    const [obj, setObj] = useState([] as Entry[]);
+    const [obj, setObj] = useState<Entry[]>([]);
 
     useEffect(() => {
         const handlePasteAnywhere = (event: any) => {
             let data = event.clipboardData.getData("text");
             try {
                 let object: Entry[] = clipboardToEntry(data);
+                console.log(object);
 
                 setObj(object);
             } catch (e) {
@@ -34,40 +35,29 @@ function Form({}: Props) {
         setObj([]);
     };
 
+    const handleRemove = (start: Date) => {
+        setObj((prev) => prev.filter((e) => e.Start !== start));
+    };
+
     return (
         /* inset css bcuz nextjs puts boundaries in html that fucks with style */
         <div className="absolute inset-0">
-            <div className="bg-themelightgray m-10 rounded-3xl h-2/3">
+            <div className="bg-themelightgray flex flex-col m-10 rounded-3xl h-2/3">
                 <h2 className="text-center py-3 text-[30px] font-bold">Excel Paste</h2>
-                <div className="bg-themered max-h-72 overflow-y-scroll mx-8">
+                <div className="max-h-[80%] rounded-3xl overflow-scroll scrollbar-hide w-fit mx-auto">
                     {obj.length ? (
-                        <table className="bg-themeyellow">
-                            <thead>
-                                <tr>
-                                    {Object.keys(obj[0]).map((e) => (
-                                        <th key={e}>{e}</th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {obj.map((e) => {
-                                    return (
-                                        <tr key={e.LAS} className="text-center">
-                                            {Object.values(e).map((e, i) => {
-                                                return <td key={i}>{e.toLocaleString()}</td>;
-                                            })}
-                                            <td>x</td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
+                        <Table handleRemove={handleRemove} obj={obj} />
                     ) : (
-                        <div>Paste Here</div>
+                        <div className="p-20 bg-themedarkgray text-themelightgray">Paste Here</div>
                     )}
                 </div>
-                <button className="bg-themedarkgray" onClick={handleSubmit}>
-                    SEND
+
+                <button
+                    disabled={obj.length === 0}
+                    onClick={handleSubmit}
+                    className="border-themedarkgray w-fit mx-auto my-10 border-2 px-4 py-1 rounded-full hover:bg-themedarkgray hover:text-themelightgray active:bg-themelightgray active:text-themedarkgray disabled:hidden"
+                >
+                    Send Data
                 </button>
             </div>
         </div>
