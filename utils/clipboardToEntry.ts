@@ -4,20 +4,24 @@
 
 import { Entry } from "../Interfaces/Entry";
 
-function excelToObject(str: string): Entry[] {
-    let rowsArr: Array<string> = str.trim().split("\n");
+function excelToObject(clipboardData: string, userId: string): Entry[] {
+    let rowsArr: Array<string> = clipboardData.trim().split("\n");
     let resultArr: Entry[] = rowsArr.map((row) => {
         const trimmed = row.trim().split("\t");
+
         if (trimmed.length != 8) throw new Error("Paste Error: Wrong Format");
         const [project, area, las, operator, date, start, end, _] = trimmed;
 
         return {
-            Project: project,
-            ManagedArea: area,
-            LAS: las,
-            Operator: operator,
-            Start: new Date(`${date} ${start}`),
-            End: new Date(`${date} ${end}`),
+            data: {
+                Project: project,
+                ManagedArea: area,
+                LAS: las,
+                Operator: operator,
+                Start: new Date(`${date} ${start}`),
+                End: new Date(`${date} ${end}`),
+            },
+            userId: userId,
         };
     });
 

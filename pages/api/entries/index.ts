@@ -2,20 +2,18 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import EntryModel from "../../../server/models/entryModel";
 import { query } from "../../../server/services/query";
-import { connectMongo } from "../../../server/utils/connectMongo";
+import { connectMongo } from "../../../server/database/connectMongo";
 
 export default async function entriesHandler(req: NextApiRequest, res: NextApiResponse) {
     await connectMongo();
     const {
         method,
-        query: { year, month, day },
+        query: { year, month, day, userId },
         body,
     } = req;
     switch (method) {
         case "POST":
             try {
-                if (typeof body.End === "number" || typeof body.Start === "number")
-                    throw Error("bad Dates");
                 const entries = await EntryModel.create(body);
                 res.status(200).json(entries);
             } catch (error) {
@@ -25,8 +23,12 @@ export default async function entriesHandler(req: NextApiRequest, res: NextApiRe
             break;
         case "GET":
             try {
-                const entries = await query({ year, month, day });
-                res.status(200).json(entries);
+                if (!userId) {
+                    res.status(400).send("Missing UserId");
+                } else if (!Array.isArray(userId)) {
+                    const entries = await query({ year, month, day, userId });
+                    res.status(200).json(entries);
+                }
             } catch (error) {
                 res.status(500).send("Internal Server Error");
             }
