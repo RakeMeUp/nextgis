@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import EntryModel from "../../../server/models/entryModel";
-import { connectMongo } from "../../../server/utils/connectMongo";
+import { connectMongo } from "../../../server/database/connectMongo";
 
 export default async function entryIdHandler(req: NextApiRequest, res: NextApiResponse) {
     await connectMongo();
