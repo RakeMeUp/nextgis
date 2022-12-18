@@ -2,9 +2,7 @@
 
 
 
-# API
-
-## Endpoints:
+## API Endpoints
 
 ### Single Entry:
 
