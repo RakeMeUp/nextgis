@@ -12,12 +12,15 @@
 
 ```
     {
-        Project:        string,
-        ManagedArea:    string,
-        LAS:            string,
-        Operator:       string,
-        Start:          Date,
-        End:            Date,
+        data: {
+            Project:        string,
+            ManagedArea:    string,
+            LAS:            string,
+            Operator:       string,
+            Start:          Date,
+            End:            Date,
+        },
+        userId: string
     }
 ```
 
@@ -31,11 +34,11 @@
 
 `api/entries/minutes` - [GET]
 
-Every query needs to have a `userId` like:
+Every query needs to have a `userId`:
 
-`api/entries/amount?userId=123`
+`api/entries/amount?userId=123xyz`
 
-You can get the userId from the session variable
+You can get the `userId` from the session variable
 
 ### Allowed queries:
 
