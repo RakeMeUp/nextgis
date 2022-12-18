@@ -1,8 +1,6 @@
-# https://nextgis.vercel.app/
+# [Live Site](https://nextgis.netlify.app/)
 
-To use api, allow ip from anywhere in mongodb
 
-https://cloud.mongodb.com/
 
 # API
 
@@ -23,6 +21,8 @@ https://cloud.mongodb.com/
     }
 ```
 
+
+
 ### Array of Entries:
 
 `api/entries/` - [GET, POST]
@@ -30,6 +30,12 @@ https://cloud.mongodb.com/
 `api/entries/amount` - [GET]
 
 `api/entries/minutes` - [GET]
+
+Every query needs to have a `userId` like:
+
+`api/entries/amount?userId=123`
+
+You can get the userId from the session variable
 
 ### Allowed queries:
 
