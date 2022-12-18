@@ -6,19 +6,13 @@ import { ToastContainer } from "react-toastify";
 import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function RootLayout({
-    children,
-    session,
-}: {
-    children: React.ReactNode;
-    session: any;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html>
             <head />
 
             <body className="bg-themedarkgray grid-parent h-screen">
-                <SessionProvider session={session}>
+                <SessionProvider>
                     <Header />
                     <Navbar />
                     <ToastContainer />
