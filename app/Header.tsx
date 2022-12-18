@@ -35,7 +35,9 @@ const Header = (props: Props) => {
                                         <button onClick={() => signOut()}>logout</button>
                                     </>
                                 ) : (
-                                    <button onClick={() => signIn()}>Log In with Google</button>
+                                    <button onClick={() => signIn("google")}>
+                                        Log In with Google
+                                    </button>
                                 )}
                             </Popover.Panel>
                         </Transition>
