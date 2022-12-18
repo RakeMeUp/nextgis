@@ -14,17 +14,17 @@ export default function RootLayout({
     session: any;
 }) {
     return (
-        <SessionProvider session={session}>
-            <html>
-                <head />
+        <html>
+            <head />
 
-                <body className="bg-themedarkgray grid-parent h-screen">
+            <body className="bg-themedarkgray grid-parent h-screen">
+                <SessionProvider session={session}>
                     <Header />
                     <Navbar />
                     <ToastContainer />
                     <main className="grid-main relative">{children}</main>
-                </body>
-            </html>
-        </SessionProvider>
+                </SessionProvider>
+            </body>
+        </html>
     );
 }
