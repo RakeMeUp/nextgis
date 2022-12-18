@@ -5,7 +5,7 @@ import clientPromise from "../../../server/database/adapter_mongoDB";
 
 export const authOptions: NextAuthOptions = {
     adapter: MongoDBAdapter(clientPromise),
-    secret: process.env.SECRET_TOKEN,
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
