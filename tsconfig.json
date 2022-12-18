@@ -22,14 +22,18 @@
       {
         "name": "next"
       }
+    ],
+    "typeRoots": [
+      "./types"
     ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "__tests__/api/minutes.test.js"  ],
+    ".next/types/**/*.ts",
+    "__tests__/api/minutes.test.js"
+  ],
   "exclude": [
     "node_modules"
   ]
