@@ -1,5 +1,17 @@
 # [Live Site](https://nextgis.netlify.app/)
 
+Gis logger is a personal logger site to keep up with my work.
+
+Stores excel rows into a database and provides statistics out of them.
+
+Google OAuth 2.0 is provided, multiple accounts can have their own set of data.
+
+### Tech:
+
+- `TypeScript`
+- `NextJS` / `Next-Auth`
+- `MongoDb` / `Mongoose`
+- `Tailwind` / `Headless UI` / `Toastify`
 
 
 ## API Endpoints
