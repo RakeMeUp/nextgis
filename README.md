@@ -10,7 +10,7 @@ Google OAuth 2.0 is provided, multiple accounts can have their own set of data.
 
 - `TypeScript`
 - `NextJS` / `Next-Auth`
-- `MongoDb` / `Mongoose`
+- `MongoDB` / `Mongoose`
 - `Tailwind` / `Headless UI` / `Toastify`
 
 
