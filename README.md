@@ -1,6 +1,6 @@
 # [Live Site](https://nextgis.netlify.app/)
 
-Gis logger is a personal logger site to keep up with my work.
+Gis logger is a personal Full-Stack Logger to keep up with my work.
 
 Stores excel rows into a database and provides statistics out of them.
 
