@@ -1,10 +1,8 @@
-type posterProps = {
-    method: "POST" | "PUT";
-    route: string;
-    data?: any;
-};
-
-export const poster = async ({ route, method, data }: posterProps): Promise<Error | void> => {
+export const poster = async (
+    route: "POST" | "PUT",
+    method: string,
+    data?: any
+): Promise<Error | void> => {
     fetch(route, {
         method: method,
         headers: {
